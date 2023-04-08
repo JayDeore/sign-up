@@ -23,4 +23,8 @@ export class SignupService {
     this.signup.push(signup);
     return signup;
   }
+
+  deleteSignup(email: string) {
+    this.signup = this.signup.filter((signup) => signup.email !== email);
+  }
 }

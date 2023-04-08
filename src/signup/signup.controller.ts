@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { SignupService } from './signup.service';
 import { Signup } from './signup.model';
 
@@ -25,5 +25,11 @@ export class SignupController {
     @Body('city') city: string,
   ): Signup {
     return this.signupService.addSignup(name, email, state, city);
+  }
+
+  @Delete('/:email')
+  deleteSignup(@Param('email') email: string) {
+    this.signupService.deleteSignup(email);
+    return 'Email is deleted';
   }
 }
